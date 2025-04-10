@@ -1,8 +1,9 @@
 import { defineConfig } from "vitepress";
-import sidebar from "./sidebar.mjs";
+import { withSidebar } from "vitepress-sidebar";
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+
+const vitePressOptions = {
   lang: "zh-CN",
   title: "TaricのBlog",
   titleTemplate: ":title - Custom Suffix",
@@ -19,8 +20,6 @@ export default defineConfig({
         items: [{ text: "数据结构与算法", link: "/algorithm/" }],
       },
     ],
-
-    sidebar: sidebar,
 
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
@@ -50,4 +49,40 @@ export default defineConfig({
       },
     },
   },
-});
+};
+
+const vitePressSidebarOptions = [
+  {
+    documentRootPath: "docs",
+    scanStartPath: "src/frontend",
+    resolvePath: "/frontend/",
+    manualSortFileNameByPriority: ["html", "css", "javascript", "typescript"],
+    collapsed: false,
+    capitalizeFirst: true,
+    useTitleFromFileHeading: true,
+    useTitleFromFrontmatter: true,
+    useFolderTitleFromIndexFile: true,
+  },
+  {
+    documentRootPath: "docs",
+    scanStartPath: "src/engineering",
+    resolvePath: "/engineering/",
+    collapsed: false,
+    capitalizeFirst: true,
+    useTitleFromFileHeading: true,
+    useTitleFromFrontmatter: true,
+    useFolderTitleFromIndexFile: true,
+  },
+  {
+    documentRootPath: "docs/src",
+    scanStartPath: "algorithm/",
+    resolvePath: "/algorithm/",
+    useTitleFromFileHeading: true,
+    collapsed: false,
+    collapseDepth: 3,
+    rootGroupCollapsed: true,
+  },
+];
+export default defineConfig(
+  withSidebar(vitePressOptions, vitePressSidebarOptions)
+);

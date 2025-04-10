@@ -19,13 +19,14 @@ features:
     # details: HTML、CSS、Javascript、Vue、React、Typescript等
     details: 真正的大师，永远都怀着一颗学徒的心。
     linkText: 查看详情
-    link: /frontend
+    link: /frontend/
   - icon:
       src: /asset/svg/home-two.svg
     title: 工程化
     # details: 开发规范、提交规范、单元测试、应用打包、自动化部署、持续集成等
     details: 值得做的事情，就是值得做对的事情。
     linkText: 查看详情
+    link: /engineering/
   - icon:
       src: /asset/svg/home-three.svg
     title: 服务端开发
